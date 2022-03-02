@@ -32,6 +32,16 @@ public class AdvprojectController {
         return new ResponseEntity<Advproject>(advproject, new HttpHeaders(), HttpStatus.OK);
     }
 
+    @GetMapping ("displayFile/{id}")
+    public ResponseEntity<byte[]> displayImage(@PathVariable("id") String id) {
+        // Load file from database and show it in the browswer
+        Advproject advproject = service.getAdvprojectById(id);
+
+        byte[] imageBytes = advproject.getImage();
+
+        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(imageBytes);
+    }
+
     @PostMapping(value = "/add", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> storeFile(@RequestParam("file")MultipartFile file,
                                              @RequestParam("name") String name,

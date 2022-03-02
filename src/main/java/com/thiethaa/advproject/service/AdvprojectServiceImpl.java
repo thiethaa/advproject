@@ -33,7 +33,7 @@ public class AdvprojectServiceImpl implements AdvprojectService {
             advproject.setFileType(file.getContentType());
 
             String displayFileUrl = ServletUriComponentsBuilder.fromCurrentContextPath()
-                    .path("/advprojevt/displayImage/")
+                    .path("/advproject/displayFile/")
                     .path(advproject.getId())
                     .toUriString();
 
@@ -61,7 +61,7 @@ public class AdvprojectServiceImpl implements AdvprojectService {
                     newAdv.setFileType(file.getContentType());
 
                     String displayFileUrl = ServletUriComponentsBuilder.fromCurrentContextPath()
-                            .path("/advproject/displayImage/")
+                            .path("/advproject/displayFile/")
                             .path(newAdv.getId())
                             .toUriString();
 
